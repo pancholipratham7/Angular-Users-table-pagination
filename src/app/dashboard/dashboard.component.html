@@ -1,16 +1,9 @@
 <div class="container">
     <p-sidebar [style]="{width:'inherit',backgroundColor:'#16A0A9'}"  [(visible)]="display" [baseZIndex]="10000" [modal]="false" [showCloseIcon]="false">
         <h1 class="sidebar-heading">Dashboard</h1>
-        <ul>
-            <div class="sidebar-link-container">
-                <i class="pi pi-users"></i>
-                <a class="sideLinks" routerLink="/dashboard/users">Users</a>
-            </div>
-            <div class="sidebar-link-container">
-                <i class="pi pi-plus"></i>
-                <a class="sideLinks" routerLink="/dashboard/roles">Roles</a>
-            </div>
-        </ul>
     </p-sidebar>
-    <router-outlet></router-outlet>
+    <div class="main-content">
+        <app-tab-menu></app-tab-menu>
+        <router-outlet></router-outlet>
+    </div>
 </div>

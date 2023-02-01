@@ -36,7 +36,7 @@ export class SignInComponent {
 
     // storing the session
     sessionStorage.setItem("username",this.signInForm.value.username);
-    this.router.navigate(['/home']);    
+    this.router.navigate(['/dashboard/users']);    
   }
   
   

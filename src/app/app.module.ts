@@ -21,6 +21,9 @@ import { HomeComponent } from './home/home.component';
 import { RolesComponent } from './roles/roles.component';
 import {AccordionModule} from 'primeng/accordion';
 import {DropdownModule} from 'primeng/dropdown';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { TabMenuComponent } from './tab-menu/tab-menu.component';
+import { AddUserPopupComponent } from './add-user-popup/add-user-popup.component';
 
 
 const appRoutes:Routes = [
@@ -46,6 +49,8 @@ const appRoutes:Routes = [
     PopupFormComponent,
     HomeComponent,
     RolesComponent,
+    TabMenuComponent,
+    AddUserPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,8 @@ const appRoutes:Routes = [
     DialogModule,
     ConfirmDialogModule,
     AccordionModule,
-    DropdownModule
+    DropdownModule,
+    TabMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

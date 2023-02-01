@@ -1,11 +1,18 @@
-<span class="p-input-icon-left searchBoxContainer">
-    <i class="pi pi-search"></i>
-    <input #inputUsername type="text" pInputText  placeholder="Search by username">
-    <button (click)="onSearch()" class="searchBtn">Search</button> 
-</span>
+<div class="utility">
+    <span class="p-input-icon-left searchBoxContainer">
+        <i class="pi pi-search"></i>
+        <input #inputUsername type="text" pInputText  placeholder="Search by username">
+        <button (click)="onSearch()" class="searchBtn">Search</button> 
+    </span>
+    <button (click)="showAddUserPopup()" class="searchBtn">Add user</button>
+</div>
 <div class="main-content">
     <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <app-add-user-popup (add)="addNewUser($event)" (close)="closeAddUserPopup()" *ngIf="addUserPopup"></app-add-user-popup>
+    
+    <!-- update popup form -->
     <app-popup-form *ngIf="display" (update)="updateUser($event)" [userId]="userId" (close)="closeModal()"></app-popup-form>
+    
     <p-table [value]="users">
         <ng-template pTemplate="header">
             <tr>
@@ -27,7 +34,7 @@
                 <td>
                     <div class="editBtn-container">
                         <p-button (click)="openModal($event)" label="Update" ></p-button>
-                        <button (click)="deleteUser($event)" pButton icon="pi pi-check" label="Delete"></button>
+                        <button (click)="deleteUser($event)" pButton icon="pi pi-trash" label="Delete"></button>
                     </div>
                 </td>
             </tr>

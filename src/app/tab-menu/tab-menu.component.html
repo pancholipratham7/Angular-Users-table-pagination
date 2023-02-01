@@ -1,0 +1,10 @@
+<div class="tabContainer">
+    <p-tabMenu (activeItemChange)="onTabChange($event)"  [model]="tabs" [activeItem]="activeItem"></p-tabMenu>
+    <div class="userLoginContainer">
+        <div class="user">
+            <i class="pi pi-user"></i>
+            <span class="username">{{username}}</span>
+        </div>
+        <button (click)="logoutHandler()" class="logoutBtn">Log out</button>
+    </div>
+</div>

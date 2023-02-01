@@ -38,8 +38,6 @@ app-root{
 }
 
 app-users-table {
-    height: 100vh;
-    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -11,11 +11,12 @@ import {ConfirmationService} from 'primeng/api';
   providers:[DataService,ConfirmationService]
 })
 export class UsersTableComponent implements OnInit {
+  addUserPopup:Boolean;
   users:any[];
   userId;
   allUsersData:any[];
   currentPage:number;
-  perPage = 8;
+  perPage = 7;
   display:Boolean = false;
   @ViewChild('inputUsername') inputUsername:ElementRef;
 
@@ -24,6 +25,7 @@ export class UsersTableComponent implements OnInit {
     this.allUsersData = this.service.getData();
     this.users = this.allUsersData;
     this.currentPage = 1;
+    this.addUserPopup = false;
   }
 
   ngOnInit(): void {
@@ -120,6 +122,19 @@ export class UsersTableComponent implements OnInit {
     // closing the modal popup
     this.display = false;
 
+  }
+  
+  showAddUserPopup() {
+    this.addUserPopup = true;
+  }
+
+  closeAddUserPopup() {
+    this.addUserPopup = false;
+  }
+
+  addNewUser(event:any) {
+    this.allUsersData.push(event);
+    this.addUserPopup = false;
   }
 
   }
