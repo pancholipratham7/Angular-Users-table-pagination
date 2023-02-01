@@ -1,0 +1,55 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+
+label{
+    margin-top: 20px;
+}
+
+input{
+    padding: 5px 15px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: white;
+    align-items: center;
+}
+p-button{
+    align-self: flex-end;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+p-accordion{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px;
+}
+
+.data{
+    display: block;
+}
+
+form label{
+    margin-top: 30px;
+    display: block;
+}
+form input {
+    width: 80%;
+    padding: 10px 10px;
+}

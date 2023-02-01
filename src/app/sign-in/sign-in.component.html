@@ -1,0 +1,23 @@
+<img class="logo" src="assets/images/logo.png" />
+<form (ngSubmit)="onSubmit()" [formGroup]="signInForm" #myForm="ngForm" autocomplete="off" class="signup-form" action="/result">
+    <h1 class="form-heading">Back to your account</h1>
+    <p *ngIf="errorHead && myForm.submitted" class="errorHead">Wrong Credentials!</p>
+    <div class="form-content">
+        <div class="username-input-container">
+            <div class="form-group username-input">
+                <input [ngClass]="{inputError:signInForm.get('username').invalid && signInForm.get('username').touched}" class="inputField" id="usernameField" type="text" aria-describedby="emailHelp" formControlName="username" placeholder="Username">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+            </div>
+            <span *ngIf="signInForm.get('username').errors?.['required'] && signInForm.get('username').touched" id="usernameError" class="error">Username should not be a empty field</span>
+        </div>
+        <div class="password-input-container">
+            <div class="form-group password-input">
+                <input [ngClass]="{inputError:signInForm.get('password').invalid && signInForm.get('password').touched}" class="inputField" id="passwordField" type="password" placeholder="Password" formControlName="password">
+                <img id="passIcon" class="fa" src="assets/images/Vector.png"/>
+            </div>
+            <span *ngIf="signInForm.get('password').errors?.['required'] && signInForm.get('password').touched" id="passwordError" class="error">Password should not be a empty field</span>
+        </div>
+        <a routerLink="/forget-password" class="forgetPss" href="">Forgot Password</a>
+        <button [disabled]="!signInForm.valid" class="submit-btn" type="submit">Sign In</button>
+    </div>  
+</form>

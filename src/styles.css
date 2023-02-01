@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body{
+    height: 100vh;
+    width: 100%;
+    background: rgba(22, 160, 169, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+app-sign-up,app-sign-in,app-forget-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+app-dashboard{
+    width: 100%;
+    height: 100vh;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+app-root{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+app-users-table {
+    height: 100vh;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+app-roles{
+    width: 80%;
+    height: 100vh;
+}

@@ -1,0 +1,47 @@
+<p-dialog
+header="Update User"
+[(visible)]="showPopup"
+[style]="{width: '50vw',height:'90vh'}"
+[draggable]="false" 
+[modal]="true"
+[closable]="false"
+[resizable]="false">
+<form autocomplete="off" (ngSubmit)="onSubmit($event)" [formGroup]="popupForm">
+    <label for="username">Username:</label>
+    <input [ngClass]="{inputError:!popupForm.get('username').valid && popupForm.get('username').dirty}" type="text" id="username" name="username" formControlName="username">
+    <span *ngIf="popupForm.get('username').errors?.required && popupForm.get('username').dirty" class="error">Username should not be empty!</span>
+    <span *ngIf="!popupForm.get('username').errors?.required && popupForm.get('username').dirty && (popupForm.get('username').errors?.minlength || popupForm.get('username').errors?.maxlength)" class="error">Username should have between 3 and 25 characters!</span>
+    <label for="email">Email:</label>
+    <input [ngClass]="{inputError:popupForm.get('email').invalid && popupForm.get('email').dirty}" type="email" id="email" name="email" formControlName="email">
+    <span *ngIf="popupForm.get('email').errors?.required && popupForm.get('email').dirty" class="error">Email Field should not be empty!</span>
+    <span *ngIf="!popupForm.get('email').errors?.required && popupForm.get('email').dirty && popupForm.get('email').errors?.email" class="error">Email is not valid!</span>
+    <label for="address">Address:</label>
+    <input [ngClass]="{inputError:popupForm.get('address').invalid && popupForm.get('address').dirty}" type="text" id="address" name="address" formControlName="address">
+    <span *ngIf="popupForm.get('address').errors?.required && popupForm.get('address').dirty" class="error">Address should not be empty!</span>
+    <label for="contact">Contact:</label>
+    <input [ngClass]="{inputError:popupForm.get('contact').invalid && popupForm.get('contact').dirty}" type="text" id="contact" name="contact" formControlName="contact">
+    <span *ngIf="popupForm.get('contact').errors?.required && popupForm.get('contact').dirty" class="error">Contact Field should not be empty!</span>
+    <span *ngIf="!popupForm.get('contact').errors?.required && popupForm.get('contact').dirty && popupForm.get('contact').errors?.pattern" class="error">Contact No should consist of only digits between 0-9!</span>
+    <span *ngIf="!popupForm.get('contact').errors?.pattern && !popupForm.get('contact').errors?.required && popupForm.get('contact').dirty && (popupForm.get('contact').errors?.minlength || popupForm.get('contact').errors?.maxlength)" class="error">Contact No must have 10 digits!</span>
+    <label for="role">Role:</label>
+    <select [ngClass]="{inputError:popupForm.get('role').invalid && popupForm.get('role').dirty}" name="role" id="role" formControlName="role">
+        <option value="Admin">Admin</option>
+        <option value="Developer">Developer</option>
+        <option value="QA">QA</option>
+    </select>
+    <span *ngIf="popupForm.get('role').errors?.required" class="error">Please select a role!</span>
+    <div class="btn-container">
+        <p-button
+        [disabled]="popupForm.invalid"
+        type="submit"
+        label="Update"
+        styleClass="p-button-success">
+        </p-button>
+        <p-button
+        (click)="closePopup()"
+        label="Cancel"
+        styleClass="p-button-danger">
+        </p-button>
+    </div>
+</form>   
+</p-dialog>

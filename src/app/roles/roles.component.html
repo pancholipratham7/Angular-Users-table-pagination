@@ -1,0 +1,48 @@
+<div class="container">
+    <h1 class="heading">Roles</h1>
+    <p-dialog
+        header="Add New Role"
+        [(visible)]="showPopup"
+        [style]="{width: '30vw',height:'40vh'}"
+        [draggable]="false" 
+        [modal]="true"
+        [resizable]="false">
+        <form>
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" #inputRole>
+            <label for="permission">Permission:</label>
+            <input type="text" id="permission" name="permission" #inputPermission>
+        </form>
+
+        <ng-template pTemplate="footer">
+            <p-button
+                (click)="updateRole()"
+                label="Update"
+                styleClass="p-button-success">
+            </p-button>
+            
+            <p-button
+                (click)="showPopup = false"
+                label="Cancel"
+                styleClass="p-button-danger">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+
+    <div class="content">
+        <p-button (click)="showRolePopup()" label="Add Role" ></p-button>
+        <p-accordion [style]="{width:'90%'}">
+            <p-accordionTab *ngFor="let role of roles" header={{role.name}}>
+                <div class="data">
+                    <label for="role">Role : </label>
+                    <span>{{role.name}}</span>
+                </div>
+                <div class="data">
+                    <label for="permission">Permission : </label>
+                    <span>{{role.permissions}}</span>
+                </div>
+            </p-accordionTab>   
+        </p-accordion>
+    </div>
+
+</div>

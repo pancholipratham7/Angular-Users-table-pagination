@@ -1,0 +1,34 @@
+<img class="logo" src="assets/images/logo.png" />
+<form (ngSubmit)="onSubmit()" [formGroup]="signUpForm" class="signup-form" autocomplete="off" action="/result">
+    <h1 class="form-heading">Create an account</h1>
+    <div class="form-content">
+        <div class="email-input-container">
+            <div class="form-group email-input">
+                <input [ngClass]="{inputError:!signUpForm.get('email').valid && signUpForm.get('email').dirty}" id="emailField" class="inputField" type="text" placeholder="Email" formControlName="email">
+                <img class="fa" src="assets/images/email.png" />
+            </div>
+            <span *ngIf="signUpForm.get('email').errors?.['required'] && signUpForm.get('email').touched" id="emailError" class="error">Email should not be a empty field</span>
+            <span *ngIf="signUpForm.get('email').errors?.['email'] && signUpForm.get('email').dirty" id="emailError" class="error">Email is not valid</span>
+            <span *ngIf="(!signUpForm.get('email').errors?.['email'] && signUpForm.get('email').errors?.['emailExists']) && signUpForm.get('email').dirty"  id="emailError" class="error">Email already exists!</span>
+        </div>
+        <div class="username-input-container">
+            <div class="form-group username-input">
+                <input [ngClass]="{inputError:!signUpForm.get('username').valid && signUpForm.get('username').dirty}" id="usernameField" class="inputField" type="text" aria-describedby="emailHelp"
+                    placeholder="Username" formControlName="username">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+            </div>
+            <span *ngIf="signUpForm.get('username').errors?.['required'] && signUpForm.get('username').touched"  id="usernameError" class="error">Username Field should not be empty!</span>
+            <span *ngIf="(signUpForm.get('username').errors?.['minlength'] || signUpForm.get('username').errors?.['maxlength'] ) && signUpForm.get('username').dirty"  id="usernameError" class="error">Username should have between 3 and 25 characters</span>
+            <span *ngIf="(!(signUpForm.get('username').errors?.['minlength'] || signUpForm.get('username').errors?.['maxlength'])  && signUpForm.get('username').errors?.['usernameExists']) && signUpForm.get('username').dirty"  id="usernameError" class="error">Username already exists!</span>
+        </div>
+        <div class="password-input-container">
+            <div class="form-group password-input">
+                <input [ngClass]="{inputError:!signUpForm.get('password').valid && signUpForm.get('password').dirty}" id="passwordField" type="password" class="inputField" placeholder="Password" formControlName="password">
+                <img id="passIcon" class="fa" src="assets/images/Vector.png" />
+            </div>
+            <span *ngIf="signUpForm.get('password').errors?.['required'] && signUpForm.get('password').touched" id="passwordError" class="error">Password Field should not be empty!</span>
+            <span *ngIf="!signUpForm.get('password').errors?.['required'] && signUpForm.get('password').errors?.['password'] && signUpForm.get('password').dirty" id="passwordError" class="error">Password must have between 8 and 20 characters, atleast one lowercase letter, one uppercase letter, one number</span>
+        </div>
+        <button [disabled]="!signUpForm.valid" class="submit-btn" type="submit">Sign Up</button>
+    </div>
+</form>
